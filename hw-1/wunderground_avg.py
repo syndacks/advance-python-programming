@@ -39,8 +39,8 @@ def extract_dataset(location):
 def calculate_temp(data):
     '''calculates min, max, mean and standart deviation from data'''
     temp = [int(i[2]) for i in data]
-    mean_temp, max_temp, min_temp = sum(temp) /len(data), max(temp), min(temp)
-    sd = (sum([(int(i) - mean_temp)**2 for i in temp]) / float(len(data)))**(0.5)
+    mean_temp, max_temp, min_temp = sum(temp) / len(temp), max(temp), min(temp)
+    sd = (sum([(int(i) - mean_temp)**2 for i in temp]) / float(len(temp)))**(0.5)
     return {'average_temp': mean_temp, 'min_temp': min_temp, 'max_temp': max_temp, 'standard_deviation': sd}
 
 def report_temps(temp_data):
