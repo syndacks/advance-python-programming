@@ -48,7 +48,7 @@ def report_temps(temp_data):
     report_data = [REPORT_STRING.format(sys.argv[1])]
     for item in temp_data:
         report_data.append("{}: {}".format(item.replace("_", " "), temp_data[item]))
-    exit("\n".join(report_data))
+    print("\n".join(report_data))
 
 def main():
     '''main program entry point'''
