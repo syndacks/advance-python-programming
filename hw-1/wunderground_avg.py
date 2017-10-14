@@ -2,6 +2,8 @@ import sys
 
 REPORT_STRING = '''Summary of daily temperature data for {} in year 2016'''
 
+DATASOURCE_FOLDER = 'data_source'
+
 USAGE_STRING = '''Error: {}
 
 Usage:
@@ -29,7 +31,7 @@ def validate_input(arg):
 def extract_dataset(location):
     '''extracts data from csv into a 2D array'''
     try:
-        fh = open('data_source/weather_{}.csv'.format(location), 'r').read().strip()
+        fh = open('{}/weather_{}.csv'.format(DATASOURCE_FOLDER, location), 'r').read().strip()
     except Exception, e:
         info_logging(e)
     data = [row.split(',') for row in fh.split('\n')]
