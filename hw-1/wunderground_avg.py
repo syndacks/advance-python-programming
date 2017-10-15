@@ -1,16 +1,12 @@
 import sys
 
 REPORT_STRING = '''Summary of daily temperature data for {} in year 2016'''
-
 DATASOURCE_FOLDER = 'data_source'
-
 USAGE_STRING = '''Error: {}
-
 Usage:
       wunderground_avg.py computes the 2016 avg temp,
       max temp, min temp and
       standard deviation for a given city.
-
 Valid cities are: New York, Chicago, Honolulu, Los Angeles.'''
 
 def info_logging(msg):
