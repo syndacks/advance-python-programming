@@ -21,20 +21,15 @@ def validate_input(arg):
     '''validates and normalize the command line argument'''
     if not len(sys.argv) == 2:
         info_logging('please enter the required argument')
-    else:
-        try:
-            city = "".join(arg[1].lower().split())
-        except Exception, e:
-            info_logging(e)
-    return city
+    return "".join(arg[1].lower().split())
 
-def extract_dataset(location):
-    '''extracts data from csv into a 2D array'''
+def format_dataset(location):
+    '''extracts data from csv into a 2D list'''
     try:
         with open('{}/weather_{}.csv'.format(DATASOURCE_FOLDER, location)) as f:
             fh = f.read().strip()
-    except Exception, e:
-        info_logging(e)
+    except IOError:
+        info_logging("Argument could not be matched to any dataset")
     data = [row.split(',') for row in fh.split('\n')]
     del data[0]
     return data
@@ -56,7 +51,7 @@ def report_temps(temp_data):
 def main():
     '''main program entry point'''
     city = validate_input(sys.argv)
-    data = extract_dataset(city)
+    data = format_dataset(city)
     temp_data = calculate_temp(data)
     report_temps(temp_data)
 
