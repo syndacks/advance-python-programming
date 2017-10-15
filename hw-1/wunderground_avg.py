@@ -31,7 +31,8 @@ def validate_input(arg):
 def extract_dataset(location):
     '''extracts data from csv into a 2D array'''
     try:
-        fh = open('{}/weather_{}.csv'.format(DATASOURCE_FOLDER, location), 'r').read().strip()
+        with open('{}/weather_{}.csv'.format(DATASOURCE_FOLDER, location)) as f:
+            fh = f.read().strip()
     except Exception, e:
         info_logging(e)
     data = [row.split(',') for row in fh.split('\n')]
